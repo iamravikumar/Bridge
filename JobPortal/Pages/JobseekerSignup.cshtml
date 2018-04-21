@@ -1,0 +1,71 @@
+﻿@page
+@model JobPortal.Pages.JobseekerSignupModel
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<h1 class="text-center" style="font-family:'Comic Sans MS';">Sign Up</h1>
+<p class="text-center" style="font-family:'Comic Sans MS';">JobSeeker</p>
+<hr />
+<div class="row">
+    <p class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">Enter the following details:</p>
+</div>
+<br />
+<form method="post">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 text-danger"></div>
+    </div>
+    <div class="row">
+        
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 form-group">
+            <label asp-for="CurrentJobSeeker.FirstName">First Name:</label>
+            <input type="text" class="form-control" asp-for="CurrentJobSeeker.FirstName" style="background-color:#ecf0f1;"/>
+            <span asp-validation-for="CurrentJobSeeker.FirstName" class="text-danger"></span>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group">
+            <label asp-for="CurrentJobSeeker.LastName">Last Name:</label>
+            <input type="text" class="form-control" asp-for="CurrentJobSeeker.LastName" style="background-color:#ecf0f1;"/>
+            <span asp-validation-for="CurrentJobSeeker.LastName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 form-group">
+            <label asp-for="CurrentJobSeeker.EmailID">EmailID:</label>
+            <input type="email" class="form-control" asp-for="CurrentJobSeeker.EmailID" style="background-color:#ecf0f1;"/>
+            <span asp-validation-for="CurrentJobSeeker.EmailID" class="text-danger"></span>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group">
+            <label asp-for="CurrentJobSeeker.MobileNumber">Mobile Number:</label>
+            <input type="tel" class="form-control" asp-for="CurrentJobSeeker.MobileNumber" style="background-color:#ecf0f1;"/>
+            <span asp-validation-for="CurrentJobSeeker.MobileNumber" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 form-group">
+            <label asp-for="CurrentJobSeeker.Password">Password:</label>
+            <input type="password" class="form-control" asp-for="CurrentJobSeeker.Password" style="background-color:#ecf0f1;"/>
+            <span asp-validation-for="CurrentJobSeeker.Password" class="text-danger"></span>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group">
+            <label asp-for="CurrentJobSeeker.ConfirmPassword">Confirm Password:</label>
+            <input type="password" class="form-control" asp-for="CurrentJobSeeker.ConfirmPassword" style="background-color:#ecf0f1;"/>
+            <span asp-validation-for="CurrentJobSeeker.ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+
+            <input type="submit" class="btn " value="Sign Up" style="background-color:#34495e;color:#FFFFFF;"/>
+
+        </div>
+    </div>
+</form>
+<br />
+<br />
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

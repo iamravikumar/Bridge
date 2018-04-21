@@ -1,0 +1,171 @@
+﻿@page
+@model JobPortal.Pages.JobProviderEditProfileModel
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+@if (User.Identity.IsAuthenticated)
+{
+    <h1 class="text-center" style="font-family:'Comic Sans MS';">Edit Profile</h1>
+    <p class="text-center" style="font-family:'Comic Sans MS';">Recruiter</p>
+    <hr />
+    <div class="row">
+        <p class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" style="font-weight:bold;">Personal Details:</p>
+    </div>
+    <form method="post">
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 text-danger"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group ">
+                <label asp-for="CurrentJobSeeker.FirstName" style="font-weight:normal;">First Name:</label>
+                <input type="text" class="form-control" asp-for="CurrentJobSeeker.FirstName" disabled />
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group col-lg-offset-1 col-md-offset-1">
+                <label asp-for="CurrentJobSeeker.LastName" style="font-weight:normal;">Last Name:</label>
+                <input type="text" class="form-control" asp-for="CurrentJobSeeker.LastName" disabled />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group ">
+                <label asp-for="CurrentJobSeeker.EmailID" style="font-weight:normal;">Email ID:</label>
+                <input type="text" class="form-control" asp-for="CurrentJobSeeker.EmailID" disabled />
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 form-group col-lg-offset-1 col-md-offset-1">
+                <label asp-for="CurrentJobSeeker.MobileNumber" style="font-weight:normal;">Mobile No.   :</label>
+                <input type="text" class="form-control" asp-for="CurrentJobSeeker.MobileNumber" disabled />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group">
+                <label asp-for="CurrentJobSeeker.CurrentDesignation" style="font-weight:normal;">Your Designation:</label>
+                <input type="text" asp-for="CurrentJobSeeker.CurrentDesignation" class="form-control" required style="background-color:#ecf0f1;"/>
+                <span asp-validation-for="CurrentJobSeeker.CurrentDesignation" class="text-danger"></span>
+
+
+
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group">
+                <label asp-for="CurrentJobSeeker.ExperienceInHiring" style="font-weight:normal;">Experience In Hiring: <small>(In Years)</small></label>
+                <input type="number" class="form-control" asp-for="CurrentJobSeeker.ExperienceInHiring" required style="background-color:#ecf0f1;"/>
+                <span asp-validation-for="CurrentJobSeeker.ExperienceInHiring" class="text-danger"></span>
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <p class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1" style="font-weight:bold;">Company's Details:</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group ">
+                <label asp-for="CurrentJobSeeker.CompanyName" style="font-weight:normal;">Compan Name: </label>
+                <input type="text" class="form-control" asp-for="CurrentJobSeeker.CompanyName" required style="background-color:#ecf0f1;"/>
+                <span asp-validation-for="CurrentJobSeeker.CompanyName" class="text-danger"></span>
+
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group">
+                <label asp-for="CurrentJobSeeker.CurrentLocation" style="font-weight:normal;">Company's Current Location:</label>
+                <select asp-for="CurrentJobSeeker.CurrentLocation" class="form-control" style="background-color:#ecf0f1;">
+                    <option value="Banglore">Banglore</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Darbhanga">Darbhanga</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gonda">Gonda</option>
+                    <option value="Greater Noida">Greater Noida</option>
+                    <option value="Gurugram">Gurugram</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Kashipur">Kashipur</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="New Delhi">New Delhi</option>
+                    <option value="Rewari">Rewari</option>
+                </select>
+                <span asp-validation-for="CurrentJobSeeker.CurrentLocation" class="text-danger"></span>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group">
+                <label asp-for="CurrentJobSeeker.CompanyAddress" style="font-weight:normal;">Company Address:</label>
+                <input type="text" class="form-control" asp-for="CurrentJobSeeker.CompanyAddress" required style="background-color:#ecf0f1;"/>
+                <span asp-validation-for="CurrentJobSeeker.CompanyAddress" class="text-danger"></span>
+
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group">
+                <label asp-for="CurrentJobSeeker.CompanyState" style="font-weight:normal;">State:</label>
+                <input type="text" class="form-control" asp-for="CurrentJobSeeker.CompanyState" required style="background-color:#ecf0f1;"/>
+                <span asp-validation-for="CurrentJobSeeker.CompanyState" class="text-danger"></span>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group">
+                <label asp-for="CurrentJobSeeker.CompanyCountry" style="font-weight:normal;">Country:</label>
+                <input type="text" class="form-control" asp-for="CurrentJobSeeker.CompanyCountry" required style="background-color:#ecf0f1;"/>
+                <span asp-validation-for="CurrentJobSeeker.CompanyCountry" class="text-danger"></span>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group">
+
+                <label asp-for="CurrentJobSeeker.NumberOfEmployees" style="font-weight:normal;">Number Of Employees: <small></small></label>
+                <input type="number" asp-for="CurrentJobSeeker.NumberOfEmployees" class="form-control" required style="background-color:#ecf0f1;"/>
+                <span asp-validation-for="CurrentJobSeeker.NumberOfEmployees" class="text-danger"></span>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group ">
+                <label asp-for="CurrentJobSeeker.CompanywebsiteLink" style="font-weight:normal;">Company's Website: </label>
+                <input type="url" class="form-control" asp-for="CurrentJobSeeker.CompanywebsiteLink" style="background-color:#ecf0f1;"/>
+                <span asp-validation-for="CurrentJobSeeker.CompanywebsiteLink" class="text-danger"></span>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group">
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group ">
+                <label asp-for="CurrentJobSeeker.Achivements" style="font-weight:normal;">Company's Achivements: </label>
+                <textarea asp-for="CurrentJobSeeker.Achivements" class="form-control" rows="6" style="background-color:#ecf0f1;"></textarea>
+                <span asp-validation-for="CurrentJobSeeker.Achivements" class="text-danger"></span>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1 form-group">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+
+                <input type="submit" class="btn btn-default" value="Save Changes" />
+
+            </div>
+        </div>
+    </form>
+    <br />
+    <br />
+
+}
+else
+{
+
+    <h2 class="text-center">Edit Profile</h2>
+    <hr />
+    <br />
+    <br />
+    <p class="text-danger text-center">You Can Edit Profile Only If You Are Logged In.</p>
+    <br />
+    <div class="text-center">
+        <a class="btn btn-default" asp-page="/JobseekerLogin">Login</a>
+    </div>
+}
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

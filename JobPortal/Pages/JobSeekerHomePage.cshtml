@@ -1,0 +1,248 @@
+﻿@page
+@model JobPortal.Pages.JobSeekerHomePageModel
+@{
+    ViewData["Title"] = "DashBoard";
+}
+
+<h1 class="text-center" style="font-family:'Comic Sans MS';">Dashboard</h1>
+@*<div class="panel" style="background-color:#FFFFFF;" id="top">
+        <div class="panel-heading">
+            <h1 class="text-capitalize text-center" style="color:darkorange" ;>Admin</h1>
+        </div>
+    </div>*@
+<br />
+<div class="row text-center">
+    <a class="btn " data-toggle="collapse" href="#multiCollapse1" role="button" aria-expanded="false" aria-controls="multiCollapse1" style="background-color:#34495e;color:#FFFFFF;">View Applied Jobs</a>
+    <a class="btn " data-toggle="collapse" href="#multiCollapse2" role="button" aria-expanded="false" aria-controls="multiCollapse2" style="background-color:#34495e;color:#FFFFFF;">View All Jobs</a>
+    <a class="btn " data-toggle="collapse" href="#multiCollapse3" role="button" aria-expanded="false" aria-controls="multiCollapse3" style="background-color:#34495e;color:#FFFFFF;">View Your Profile</a>
+    @*<a class="btn btn-default" data-toggle="collapse" href="#multiCollapse4" role="button" aria-expanded="false" aria-controls="multiCollapse4">View QueryMessages</a>*@
+    @*<a class="btn btn-default" data-toggle="collapse" href="#multiCollapse5" role="button" aria-expanded="false" aria-controls="multiCollapse5">Send notifications to subscribers</a>*@
+</div>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="collapse multi-collapse" id="multiCollapse1">
+            <div class="container">
+                <br />
+                <h4>Applied Jobs</h4>
+                <table class="table">
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Primary Role</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Salary(LPA)</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.AppliedJobs)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JobTitle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrimaryRole)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CompanyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JobLocation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MinimumAnnualSalaryInRupees)
+                            </td>
+                            <td>
+                                <a asp-page="/DetailedJob" asp-route-id="@item.ID">View Job</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <br /><br /><br />
+        </div>
+    </div>
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="collapse multi-collapse" id="multiCollapse2">
+            <div class="container">
+                <br />
+                <h4>All Jobs</h4>
+                <table class="table">
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Primary Role</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Salary(LPA)</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.AllJobs)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JobTitle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrimaryRole)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CompanyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JobLocation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MinimumAnnualSalaryInRupees)
+                            </td>
+                            <td>
+                                <a asp-page="/DetailedJob" asp-route-id="@item.ID">View Job</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="collapse multi-collapse" id="multiCollapse3">
+            <div class="container">
+                <br />
+                <h4 class="text-center">Your Profile</h4>
+                <br />
+                <div class="row text-center">
+                    <div class="col-lg-2 col-md-2 col-xs-4 col-sm-4 col-lg-offset-5 col-md-offset-5 col-sm-offset-4 col-xs-offset-4 text-center">
+                        <a href="@Model.CurrentJobSeeker.Industry"><img src="@Model.CurrentJobSeeker.Industry" alt="Profile Pic" class="img-rounded img-responsive"></a>
+                    </div>
+                </div>
+
+                <h2 class="text-center">@Model.CurrentJobSeeker.FirstName @Model.CurrentJobSeeker.LastName</h2>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-center">
+                        <p style="font-style:italic;color:#333333;">@Model.CurrentJobSeeker.JobRole | @Model.CurrentJobSeeker.CurrentLocation</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>Email ID: <small>@Model.CurrentJobSeeker.EmailID</small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>Phone Number: <small>@Model.CurrentJobSeeker.MobileNumber</small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>Bio: <small>@Model.CurrentJobSeeker.ShortBio</small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>Work Experience: <small>@Model.CurrentJobSeeker.TotalExperience</small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>Key Skills: <small>@Model.CurrentJobSeeker.KeySkills</small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>Job Role: <small>@Model.CurrentJobSeeker.JobRole</small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>Desired Job Location: <small>@Model.CurrentJobSeeker.JobLocation</small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>Qualification: <small>@Model.CurrentJobSeeker.HighestQualification @Model.CurrentJobSeeker.HighestQualificationSubject</small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>College: <small>@Model.CurrentJobSeeker.HighestQualificationCollege</small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>Achivements: <small>@Model.CurrentJobSeeker.Achivements</small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>LinkedIn Profile: <small><a href="@Model.CurrentJobSeeker.LinkedInLink">@Model.CurrentJobSeeker.LinkedInLink</a></small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>Website Link: <small><a href="@Model.CurrentJobSeeker.WebsiteLink">@Model.CurrentJobSeeker.WebsiteLink</a></small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+                        <h4>Resume Link: <small><a href="@Model.CurrentJobSeeker.ResumeLink">View Resume</a></small></h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-center">
+                        <a class="btn " asp-page="/EditProfileSelector" style="background-color:#34495e;color:#FFFFFF;">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+            <br /><br /><br />
+        </div>
+    </div>
+    @*<div class="col-lg-12 col-lg-12 col-xs-12">
+            <div class="collapse multi-collapse" id="multiCollapse4">
+                <div class="container">
+                    <div class="panel" style="background-color:#DDDDDD;" id="top">
+                        <div class="panel-heading">
+                            <h4 class="text-capitalize text-center" style="color:darkorange" ;>Registrations for Workshop</h4>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-danger text-center">@Model.Message</span>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                        </tr>
+                        @foreach (var item in Model.QueryMessages)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Subject)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Message)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <br /><br /><br />
+            </div>
+        </div>*@
+    @*<div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="collapse multi-collapse" id="multiCollapse5">
+                <div>
+                    Will Be Added Soon
+                </div>
+            </div>
+        </div>*@
+</div>

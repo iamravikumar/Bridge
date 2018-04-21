@@ -1,0 +1,221 @@
+﻿@page
+@model JobPortal.Pages.JobProviderHomePageModel
+@{
+    ViewData["Title"] = "DashBoard";
+}
+
+<h1 class="text-center" style="font-family:'Comic Sans MS';">Dashboard</h1>
+@*<div class="panel" style="background-color:#FFFFFF;" id="top">
+        <div class="panel-heading">
+            <h1 class="text-capitalize text-center" style="color:darkorange" ;>Admin</h1>
+        </div>
+    </div>*@
+<br />
+<div class="row text-center">
+    <a class="btn " data-toggle="collapse" href="#multiCollapse2" role="button" aria-expanded="false" aria-controls="multiCollapse2" style="background-color:#34495e;color:#FFFFFF;">Post A New Job</a>
+    <a class="btn " data-toggle="collapse" href="#multiCollapse1" role="button" aria-expanded="false" aria-controls="multiCollapse1" style="background-color:#34495e;color:#FFFFFF;">View Jobs Posted By You</a>
+    <a class="btn " data-toggle="collapse" href="#multiCollapse3" role="button" aria-expanded="false" aria-controls="multiCollapse3" style="background-color:#34495e;color:#FFFFFF;">View Your Profile</a>
+    @*<a class="btn btn-default" data-toggle="collapse" href="#multiCollapse4" role="button" aria-expanded="false" aria-controls="multiCollapse4">View QueryMessages</a>*@
+    @*<a class="btn btn-default" data-toggle="collapse" href="#multiCollapse5" role="button" aria-expanded="false" aria-controls="multiCollapse5">Send notifications to subscribers</a>*@
+</div>
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="collapse multi-collapse" id="multiCollapse1">
+            <div class="container">
+                <br />
+                <h4 class="text-center">Jobs Posted By You</h4>
+                <table class="table">
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Primary Role</th>
+                        <th>Company</th>
+                        <th>Location</th>
+                        <th>Salary(LPA)</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.JobsPostedByMe)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JobTitle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrimaryRole)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CompanyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JobLocation)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MinimumAnnualSalaryInRupees)
+                            </td>
+                            <td>
+                                <a asp-page="/DetailedJob" asp-route-id="@item.ID">View Job</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <br /><br /><br />
+        </div>
+    </div>
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="collapse multi-collapse" id="multiCollapse2">
+            <div class="container">
+                <br />
+                <h4 class="text-center">Post A New Job</h4><hr />
+                <form method="post">
+                    <div class="row">
+                        <div asp-validation-summary="ModelOnly" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 text-danger"></div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 form-group">
+                            <label asp-for="NewJob.JobTitle">Job Title:</label>
+                            <input type="text" class="form-control" asp-for="NewJob.JobTitle" style="background-color:#ecf0f1;"/>
+                            <span asp-validation-for="NewJob.JobTitle" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label asp-for="NewJob.PrimaryRole">Primary Role Of The Employee:</label>
+                            <input type="text" class="form-control" asp-for="NewJob.PrimaryRole" style="background-color:#ecf0f1;"/>
+                            <span asp-validation-for="NewJob.PrimaryRole" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 form-group">
+                            <label asp-for="NewJob.Skills">Key Skills Required: <small>(Seprated by Commas)</small></label>
+                            <input type="text" class="form-control" asp-for="NewJob.Skills" style="background-color:#ecf0f1;"/>
+                            <span asp-validation-for="NewJob.Skills" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label asp-for="NewJob.JobLocation">Job Location:</label>
+                            <input type="text" class="form-control" asp-for="NewJob.JobLocation" style="background-color:#ecf0f1;"/>
+                            <span asp-validation-for="NewJob.JobLocation" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 form-group">
+                            <label asp-for="NewJob.MinimumAnnualSalaryInRupees">Minimum Annual Salary In Rupees: <small>(LPA)</small></label>
+                            <input type="number" class="form-control" asp-for="NewJob.MinimumAnnualSalaryInRupees" style="background-color:#ecf0f1;"/>
+                            <span asp-validation-for="NewJob.MinimumAnnualSalaryInRupees" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label asp-for="NewJob.MaxuimumAnnualSalaryInRupees">Maximum Annual Salary In Rupees: <small>(LPA)</small></label>
+                            <input type="number" class="form-control" asp-for="NewJob.MaxuimumAnnualSalaryInRupees" style="background-color:#ecf0f1;"/>
+                            <span asp-validation-for="NewJob.MaxuimumAnnualSalaryInRupees" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 form-group">
+                            <label asp-for="NewJob.WorkExperience">Minimum Experience Required: <small>(In Years)</small></label>
+                            <input type="number" class="form-control" asp-for="NewJob.WorkExperience" style="background-color:#ecf0f1;"/>
+                            <span asp-validation-for="NewJob.WorkExperience" class="text-danger"></span>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 form-group">
+                            <label asp-for="NewJob.CompanyName">Company Name: </label>
+                            <input type="text" class="form-control" asp-for="NewJob.CompanyName" value="@Model.CurrentJobProvider.CompanyName" style="background-color:#ecf0f1;" required/>
+                            <span asp-validation-for="NewJob.CompanyName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2 form-group">
+                            <label asp-for="NewJob.JobDescription">Full Job Description:</label>
+                            <textarea class="form-control" asp-for="NewJob.JobDescription" rows="5" style="background-color:#ecf0f1;"></textarea>
+                            <span asp-validation-for="NewJob.JobDescription" class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+
+                            <input type="submit" class="btn " value="Post Job" style="background-color:#34495e;color:#FFFFFF;"/>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="collapse multi-collapse" id="multiCollapse3">
+            <div class="container">
+                <br />
+                <h4 class="text-center">Your Profile</h4><hr />
+                <h5>Name:  @Model.CurrentJobProvider.FirstName  @Model.CurrentJobProvider.LastName</h5>
+                <h5>Email ID:  @Model.CurrentJobProvider.EmailID</h5>
+                <h5>Phone Number:  @Model.CurrentJobProvider.MobileNumber</h5>
+                <h5>Your Designation:  @Model.CurrentJobProvider.CurrentDesignation</h5>
+                <h5>Experience In Hiring:  @Model.CurrentJobProvider.ExperienceInHiring</h5>
+                <h5>Your Company Name:  @Model.CurrentJobProvider.CompanyName</h5>
+                <h5>Your Company's Website:  <a href="@Model.CurrentJobProvider.CompanywebsiteLink" target="_blank">@Model.CurrentJobProvider.CompanywebsiteLink</a></h5>
+                <h5>Your Company's Current Location:  @Model.CurrentJobProvider.CurrentLocation</h5>
+                <h5>Your Company Address:  @Model.CurrentJobProvider.CompanyAddress</h5>
+                <h5>State:  @Model.CurrentJobProvider.CompanyState</h5>
+                <h5>Country:  @Model.CurrentJobProvider.CompanyCountry</h5>
+                <h5>Number Of Employees:  @Model.CurrentJobProvider.NumberOfEmployees</h5>
+                <h5>Your Company's Achivements : @Model.CurrentJobProvider.Achivements</h5>
+                <br />
+                <a class="btn " asp-page="/EditProfileSelector" style="background-color:#34495e;color:#FFFFFF;">Edit Profile</a>
+            </div>
+            <br /><br /><br />
+        </div>
+    </div>
+    @*<div class="col-lg-12 col-lg-12 col-xs-12">
+            <div class="collapse multi-collapse" id="multiCollapse4">
+                <div class="container">
+                    <div class="panel" style="background-color:#DDDDDD;" id="top">
+                        <div class="panel-heading">
+                            <h4 class="text-capitalize text-center" style="color:darkorange" ;>Registrations for Workshop</h4>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-danger text-center">@Model.Message</span>
+                    </div>
+                    <table class="table">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                        </tr>
+                        @foreach (var item in Model.QueryMessages)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Subject)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Message)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+                <br /><br /><br />
+            </div>
+        </div>*@
+    @*<div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="collapse multi-collapse" id="multiCollapse5">
+                <div>
+                    Will Be Added Soon
+                </div>
+            </div>
+        </div>*@
+</div>

@@ -1,0 +1,96 @@
+﻿@page
+@model JobPortal.Pages.DetailedJobModel
+@{
+    ViewData["Title"] = "Job Details";
+}
+
+<h2 class="text-center">@Model.CurrentJob.JobTitle</h2>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-center">
+        <p style="font-style:italic;color:#333333;">@Model.CurrentJob.CompanyName | @Model.CurrentJob.JobLocation</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+        <h4>Primary Role: <small>@Model.CurrentJob.PrimaryRole</small></h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+        <h4>Minimum Experience Required: <small>@Model.CurrentJob.WorkExperience years</small></h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+        <h4>Skills Required: <small>@Model.CurrentJob.Skills </small></h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+        <h4>Salary: <small>@Model.CurrentJob.MinimumAnnualSalaryInRupees - @Model.CurrentJob.MaxuimumAnnualSalaryInRupees Lpa </small></h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-justify">
+        <h4>Job Description: <small>@Model.CurrentJob.JobDescription</small></h4>
+    </div>
+</div>
+<br /><br />
+@if (Model.ShowApply && Model.HasApplied)
+{
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-center">
+            <a class="btn " style="background-color:#34495e;color:#FFFFFF;">Already Applied</a>
+        </div>
+    </div>
+
+}
+@if (Model.ShowApply && Model.HasApplied == false)
+{
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 text-center">
+            <form method="post">
+
+                <input type="submit" class="btn" value="Apply For This Job" style="background-color:#34495e;color:#FFFFFF;"/>
+            </form>
+        </div>
+    </div>
+
+}
+@if (Model.ShowApply == false)
+{
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+            <h4 class="text-center"> Following Candidates Applied For This Job</h4>
+            <div class="container">
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email ID</th>
+                        <th>Phone Number</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.Candidates)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EmailID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MobileNumber)
+                            </td>
+                            <td>
+                                <a asp-page="/ViewProfileJobSeeker" asp-route-id="@item.ID">View Profile</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+
+}
+

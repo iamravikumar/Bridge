@@ -1,0 +1,107 @@
+﻿@page
+@model JobPortal.Pages.ContactUsModel
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="container">
+    <br />
+    <div class="panel" style="background-color:#ecf0f1;" id="top">
+        <div class="panel-heading">
+            <h1 class="text-capitalize text-center" style="font-family:'Comic Sans MS';">Contact Us</h1>
+        </div>
+    </div>
+    <div class="text-center">
+        <p class="text-info text-center">@Model.Message</p>
+    </div>
+    <br />
+    <div class="table">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row" style="margin-left:0em;margin-right:0em;margin-bottom:1em;">
+                    <div class="col-lg-12" style="padding-left:0em;margin-left:0em;border-bottom:2px solid black;">
+                        <h4 class="text-capitalize text-left" style="padding-bottom:0px;">Just get in Touch!</h4>
+                    </div>
+                </div>
+
+
+
+                <form method="post">
+                    <div>
+                        <div class="row">
+                            <div class="form-group col-lg-12">
+                                <label asp-for="QueryMessage.Name">Name:</label>
+                                <div>
+                                    <input class="form-control" asp-for="QueryMessage.Name" style="background-color:#ecf0f1;"/>
+                                    <span asp-validation-for="QueryMessage.Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-12">
+                                <label asp-for="QueryMessage.Email">Email:</label>
+                                <div>
+                                    <input class="form-control" asp-for="QueryMessage.Email" style="background-color:#ecf0f1;"/>
+                                    <span asp-validation-for="QueryMessage.Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-12">
+                                <label asp-for="QueryMessage.Subject">Subject:</label>
+                                <div>
+                                    <input class="form-control" asp-for="QueryMessage.Subject" style="background-color:#ecf0f1;"/>
+                                    <span asp-validation-for="QueryMessage.Subject" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-12">
+                                <label asp-for="QueryMessage.Message">Message:</label>
+                                <div>
+                                    <textarea class="form-control" asp-for="QueryMessage.Message" rows="4" style="background-color:#ecf0f1;"></textarea>
+                                    <span asp-validation-for="QueryMessage.Message" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-12 text-left">
+                                <input value="Submit" class="btn" type="submit" id="submitButton" style="background-color:#34495e;color:#FFFFFF;"/>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4">
+                <div class="row" style="margin-left:0em;margin-right:0em;margin-bottom:1em;">
+                    <div class="col-lg-12" style="padding-left:0em;margin-left:0em;border-bottom:2px solid black;">
+                        <h4 class="text-capitalize text-left" style="padding-bottom:0px;">Our Bunker</h4>
+                    </div>
+                </div>
+                <p>
+                    Bridge, Job Portal<br />
+                    Farmagudi, Ponda<br />
+                    Goa, 403401
+                </p>
+                <p></p>
+                <p>
+                    Email: <a href="mailto:bridge@jobportal.com" style="color:black;">bridge@jobportal.com</a>
+                </p>
+                <p>
+                    Phone: +91-7239823381 <br />
+                    Fax: 7239825288
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@

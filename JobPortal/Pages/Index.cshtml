@@ -1,0 +1,74 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <br />
+    <br />
+    <br />
+
+    <div class="text-center">
+        <h1 class="text-uppercase" style="font-family:'Comic Sans MS';font-size:4em;"><strong>Bridge</strong></h1>
+        <p class="text-center text-capitalize" style="">Finding the right match for your vacancies is difficult, We help you at our best</p>
+    </div>
+    <br />
+
+    <br />
+    <br />
+    <div>
+        
+        <div class="row">
+            <div class="col-lg-5 col-md-5  col-xs-12 col-sm-12 col-lg-offset-1 col-md-offset-1 text-justify" style="border:1px solid #CCCCCC; padding-bottom:5px;border-radius:20px 20px;">
+                <div>
+                    <h4 class="text-center"><strong>For Recruiters</strong></h4>
+                    <ul>
+                        <li class="text-capitalize">Exclusive set of talents</li>
+                        <li class="text-capitalize">Appropriate for your organization</li>
+                        <li class="text-capitalize">As a company your struggle reduces when we bring in all posiible candidates under one roof</li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 col-lg-offset-2 col-md-offset-2 text-center">
+                        <a asp-page="/JobProviderSignup" class="btn btn-sm" style="background-color:#34495e;color:#FFFFFF;">Sign Up</a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-center">
+                        <a asp-page="/JobproviderLogin" class="btn btn-sm " style="background-color:#34495e;color:#FFFFFF;">Login</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5  col-xs-12 col-sm-12 text-justify" style="border:1px solid #CCCCCC; padding-bottom:5px;border-radius:20px 20px;">
+                <div>
+                    <h4 class="text-center"><strong>For Job Seekers</strong></h4>
+                    <ul>
+                        <li class="text-capitalize">we bring in all your possible options here under one roof</li>
+                        <li class="text-capitalize">
+                            Oppurtunity
+                            Matching your talent
+                        </li>
+                        <li>This Point is just to make both these divs<br /> equal</li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 col-lg-offset-2 col-md-offset-2 text-center">
+                        <a asp-page="/JobseekerSignup" class="btn btn-sm" style="background-color:#34495e;color:#FFFFFF;">Sign Up</a>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-center">
+                        <a asp-page="/JobseekerLogin" class="btn btn-sm" style="background-color:#34495e;color:#FFFFFF;">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+</div>
